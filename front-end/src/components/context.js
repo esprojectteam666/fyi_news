@@ -4,6 +4,10 @@ import axios from "axios";
 
 const InfoContext = React.createContext();
 
+const api = axios.create({
+  baseURL: 'http://127.0.0.1:8000'
+})
+
 
 class InfoProvider extends Component {
   constructor(props) {
@@ -14,14 +18,13 @@ class InfoProvider extends Component {
 
     };
   }
-  getNewsinfo = () => {
-    
-    axios
-      .get("http://127.0.0.1:8000/api/news/websites/trending?action=list_trending")
+  
+  getNewsinfo = async () => {
+    let resNewsInfo = await axios
+    .get("/api/news/websites/trending?action=list_trending")
+    .catch((err) => console.log("Error: ", err))
 
-      //alert(this.ticketsinfo);
-
-
+    console.log(resNewsInfo)
   };
 
   render() {
