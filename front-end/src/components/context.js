@@ -18,7 +18,6 @@ class InfoProvider extends Component {
     
     axios
       .get("http://127.0.0.1:8000/api/news/websites/trending?action=list_trending")
-
       //alert(this.ticketsinfo);
 
 
