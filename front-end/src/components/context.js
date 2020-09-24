@@ -18,6 +18,7 @@ class InfoProvider extends Component {
 
     };
   }
+
   
   getNewsinfo = async () => {
     let resNewsInfo = await axios
