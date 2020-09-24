@@ -6,3 +6,4 @@ urlpatterns = [
 
     path('websites/trending/', trending_crud.dispatcher),
 ]
+

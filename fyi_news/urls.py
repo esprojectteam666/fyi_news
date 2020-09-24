@@ -22,3 +22,4 @@ urlpatterns = [
 
     path('api/news/', include('news.urls')),
 ]
+# http://127.0.0.1:8000/api/news/websites/trending?action=list_trending
