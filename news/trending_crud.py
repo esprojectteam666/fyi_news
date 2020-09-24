@@ -12,13 +12,13 @@ def dispatcher(request):
         request.params = json.loads(request.body)
 
     action = request.params['action']
-    if action == 'list_TendingNews':
+    if action == 'list_Trending':
         return list_TendingNews(request)
-    elif action == 'add_TendingNews':
+    elif action == 'add_Trending':
         return addcustomer(request)
-    elif action == 'modify_TendingNews':
+    elif action == 'modify_Trending':
         return modifycustomer(request)
-    elif action == 'del_TendingNews':
+    elif action == 'del_Trending':
         return deletecustomer(request)
 
     else:
