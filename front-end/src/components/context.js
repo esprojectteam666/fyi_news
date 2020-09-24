@@ -24,7 +24,7 @@ class InfoProvider extends Component {
     .get("/api/news/websites/trending?action=list_trending")
     .catch((err) => console.log("Error: ", err))
 
-    console.log(resNewsInfo)
+    // console.log(resNewsInfo)
   };
 
   render() {
