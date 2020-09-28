@@ -13,28 +13,39 @@ class InfoProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        newsinfo: [1],
+        newsInfo: [],
+        newsStatus:"",
         ticketsinfo: [],
-
     };
+    this.getNewsInfo();
   }
   
-  getNewsinfo = async () => {
+  getNewsInfo = async () => {
     let resNewsInfo = await axios
     .get("/api/news/websites/trending?action=list_trending")
-    .catch((err) => console.log("Error: ", err))
-
-    console.log(resNewsInfo)
+    //.then(res => console.log(res))
+    .then(res => this.setState({ newsInfo: res.data.retlist }))
+    .catch((err) => console.log("Error: ", err));
+    //return this.state.newsInfo;
   };
 
-  render() {
-    this.getNewsinfo();
 
-    //alert(JSON.stringify(this.newsinfo));
+  getNewsStatus = async () => {
+    let resNewsInfo = await axios
+    .get("/api/news/websites/trending?action=list_trending")
+    .then(res =>  this.setState({ newsStatus: resNewsInfo.data.ret}))
+    .catch((err) => console.log("Error: ", err));
+    //return resNewsInfo.data.ret;
+  };
+
+
+  render() {
+    //const { newsInfo } = this.getNewsInfo();
     return (
       <InfoContext.Provider value={{
-          newsinfo:this.state.newsinfo,
+          newsInfo:this.state.newsInfo,
           ticketsinfo:this.state.ticketsinfo,
+          newsStatus:this.state.newsStatus,
       }}>
         {this.props.children}
       </InfoContext.Provider>
@@ -43,5 +54,4 @@ class InfoProvider extends Component {
 }
 
 const InfoConsumer = InfoContext.Consumer;
-
 export { InfoProvider, InfoConsumer };

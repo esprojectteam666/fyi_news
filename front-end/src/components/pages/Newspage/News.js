@@ -9,7 +9,7 @@ class News extends Component {
         <div className="row mt-5">
           <InfoConsumer>
             {(value) => {
-              return value.newsinfo.map((item) => {
+              return value.newsInfo.map((item) => {
                 return <Info key={item.id} item={item} />;
               });
             }}
